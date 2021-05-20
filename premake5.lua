@@ -4,7 +4,7 @@
 project "utils"
     language "C++"
     architecture "x86_64"
-    cppdialect "C++14"
+    cppdialect "C++17"
     kind "StaticLib"
 
     location "%{prj.name}"

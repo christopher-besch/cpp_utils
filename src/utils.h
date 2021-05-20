@@ -1,11 +1,11 @@
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <stdexcept>
 #include <algorithm>
-#include <vector>
 #include <filesystem>
+#include <iostream>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 #ifdef LINUX
 #define file_slash '/'
@@ -55,13 +55,13 @@ inline int checked_stoi(std::string str)
     {
         return std::stoi(str);
     }
-    catch (const std::invalid_argument ex)
+    catch (const std::invalid_argument& ex)
     {
         raise_error("Can't convert \"" << str << "\" to int!");
     }
 }
 
-inline void remove_chars(std::string &str, std::vector<char> chars)
+inline void remove_chars(std::string& str, std::vector<char> chars)
 {
     for (int idx = str.size() - 1; idx >= 0; idx--)
         if (std::find(chars.begin(), chars.end(), str[idx]) != chars.end())

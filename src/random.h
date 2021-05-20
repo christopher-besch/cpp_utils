@@ -1,14 +1,22 @@
 #pragma once
 
 #include <cstdlib>
+#include <math.h>
+#include <random>
 
-// in [0, 1]
-inline double random_double()
+struct RandomGen
 {
-    return rand() / (RAND_MAX + 1.0);
-}
+    std::mt19937 random = std::mt19937(rand());
 
-inline double random_double(double min, double max)
-{
-    return min + (max - min) * random_double();
-}
+    // in [0, 1]
+    double next_double()
+    {
+        uint64_t val = static_cast<uint64_t>(random()) | static_cast<uint64_t>(random()) << 32;
+        return val / static_cast<double>(UINT64_MAX);
+    }
+
+    double next_double(double min, double max)
+    {
+        return min + (max - min) * next_double();
+    }
+};
