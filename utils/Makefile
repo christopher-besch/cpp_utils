@@ -39,7 +39,7 @@ TARGET = $(TARGETDIR)/libutils.a
 OBJDIR = ../../bin-int/Debug-linux-x86_64/utils
 DEFINES += -DDEBUG -DIDE -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++14
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),release)
@@ -48,7 +48,7 @@ TARGET = $(TARGETDIR)/libutils.a
 OBJDIR = ../../bin-int/Release-linux-x86_64/utils
 DEFINES += -DRELEASE -DIDE -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -g
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -g -std=c++14
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -g -std=c++17
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64
 
 else ifeq ($(config),dist)
@@ -57,7 +57,7 @@ TARGET = $(TARGETDIR)/libutils.a
 OBJDIR = ../../bin-int/Dist-linux-x86_64/utils
 DEFINES += -DDIST -DLINUX
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++14
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -std=c++17
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
 endif

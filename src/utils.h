@@ -15,12 +15,14 @@
 #endif
 
 // load files from cwd or from execution location
+// file slash at end has already been added if required
 #ifdef IDE
 inline std::string get_virtual_cwd(std::string execution_path)
 {
     return "";
 }
 #else
+// argv[0] can be used
 inline std::string get_virtual_cwd(std::string execution_path)
 {
     // cut at last slash

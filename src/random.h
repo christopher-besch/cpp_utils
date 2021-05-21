@@ -4,10 +4,12 @@
 #include <math.h>
 #include <random>
 
-struct RandomGen
+class RandomGen
 {
+private:
     std::mt19937 random = std::mt19937(rand());
 
+public:
     // in [0, 1]
     double next_double()
     {
