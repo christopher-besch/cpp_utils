@@ -69,6 +69,13 @@ endif
 # File sets
 # #############################################
 
+GENERATED :=
+OBJECTS :=
+
+GENERATED += $(OBJDIR)/console.o
+GENERATED += $(OBJDIR)/trie.o
+OBJECTS += $(OBJDIR)/console.o
+OBJECTS += $(OBJDIR)/trie.o
 
 # Rules
 # #############################################
@@ -76,7 +83,7 @@ endif
 all: $(TARGET)
 	@:
 
-$(TARGET): $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
+$(TARGET): $(GENERATED) $(OBJECTS) $(LDDEPS) | $(TARGETDIR)
 	$(PRELINKCMDS)
 	@echo Linking utils
 	$(SILENT) $(LINKCMD)
@@ -131,6 +138,13 @@ endif
 
 # File Rules
 # #############################################
+
+$(OBJDIR)/console.o: src/console.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
+$(OBJDIR)/trie.o: src/trie.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(ALL_CXXFLAGS) $(FORCE_INCLUDE) -o "$@" -MF "$(@:%.o=%.d)" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)
 ifneq (,$(PCH))
