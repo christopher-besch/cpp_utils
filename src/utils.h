@@ -17,7 +17,7 @@
 // load files from cwd or from execution location
 // file slash at end has already been added if required
 #ifdef IDE
-inline std::string get_virtual_cwd(std::string execution_path)
+inline std::string get_exec_dir(std::string execution_path)
 {
     return "";
 }
@@ -54,22 +54,22 @@ inline int checked_stoi(std::string str)
     {
         return std::stoi(str);
     }
-    catch (const std::invalid_argument &ex)
+    catch (const std::invalid_argument& ex)
     {
         raise_error("Can't convert \"" << str << "\" to int!");
     }
 }
 
-inline void remove_chars(std::string &str, std::vector<char> chars)
+inline void remove_chars(std::string& str, std::vector<char> chars)
 {
     for (int idx = str.size() - 1; idx >= 0; idx--)
         if (std::find(chars.begin(), chars.end(), str[idx]) != chars.end())
             str.erase(idx, 1);
 }
 
-inline void make_lower_case(std::string &str)
+inline void make_lower_case(std::string& str)
 {
-    for (char &character : str)
+    for (char& character : str)
         if (character >= 'A' && character <= 'Z')
             character += 'a' - 'A';
 }
