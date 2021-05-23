@@ -16,3 +16,13 @@ project "utils"
         "src/**.cpp"
     }
 
+    filter "platforms:WASM"
+        linkoptions { "-s WASM=1", "-s EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'" }
+        targetname ("%{prj.name}.html")
+
+    filter "platforms:Linux"
+        links {
+            "SDL2"
+        }
+        targetname ("%{prj.name}")
+

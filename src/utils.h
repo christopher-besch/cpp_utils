@@ -10,6 +10,9 @@
 #ifdef LINUX
 #define file_slash '/'
 #endif
+#ifdef WASM
+#define file_slash '/'
+#endif
 #ifdef WINDOWS
 #define file_slash '\\'
 #endif
