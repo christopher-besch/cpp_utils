@@ -21,8 +21,5 @@ project "utils"
         targetname ("%{prj.name}.html")
 
     filter "platforms:Linux"
-        links {
-            "SDL2"
-        }
         targetname ("%{prj.name}")
 
