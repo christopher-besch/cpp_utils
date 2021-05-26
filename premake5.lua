@@ -7,6 +7,8 @@ project "utils"
     cppdialect "C++17"
     kind "StaticLib"
 
+    warnings "Default"
+
     location ""
     targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
