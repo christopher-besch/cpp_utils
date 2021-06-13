@@ -96,8 +96,8 @@ inline bool is_little_endian()
 inline int32_t swap(uint32_t num)
 {
     int32_t result = num & 0xff;
-    result         = (result << 8) | (num >> 8) & 0xff;
-    result         = (result << 8) | (num >> 16) & 0xff;
-    result         = (result << 8) | (num >> 24) & 0xff;
+    result         = (result << 8) | ((num >> 8) & 0xff);
+    result         = (result << 8) | ((num >> 16) & 0xff);
+    result         = (result << 8) | ((num >> 24) & 0xff);
     return result;
 }
