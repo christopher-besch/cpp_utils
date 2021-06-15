@@ -7,13 +7,13 @@
 #include <string>
 #include <vector>
 
-#ifdef LINUX
+#ifdef __linux__
 #define file_slash '/'
 #endif
-#ifdef WASM
+#ifdef __wasm__
 #define file_slash '/'
 #endif
-#ifdef WINDOWS
+#if defined(_WIN32) || defined(_WIN64)
 #define file_slash '\\'
 #endif
 
@@ -37,7 +37,7 @@ inline std::string get_exec_dir(std::string execution_path)
 }
 #endif
 
-#ifdef DEBUG
+#ifndef NDEBUG
 #define raise_error(msg)                                                                                                  \
     {                                                                                                                     \
         std::cerr << msg << " (in: " << __FILE__ << ":" << __LINE__ << "; in function: " << __func__ << ")" << std::endl; \
