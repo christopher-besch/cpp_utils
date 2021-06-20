@@ -3,7 +3,7 @@
 void Trie::insert(std::string key)
 {
     // start at root node
-    TrieNode *current_node = m_root;
+    TrieNode* current_node = m_root;
     for (int idx = 0; idx < key.size(); idx++)
     {
         int char_idx = char_to_idx(key[idx]);
@@ -19,7 +19,7 @@ void Trie::insert(std::string key)
 bool Trie::search(std::string key) const
 {
     // start at root node
-    TrieNode *current_node = m_root;
+    TrieNode* current_node = m_root;
     for (int idx = 0; idx < key.size(); idx++)
     {
         int char_idx = char_to_idx(key[idx]);
@@ -37,8 +37,8 @@ int Trie::count_matching_chars(std::string key) const
 {
     int count = 0;
     // start at root node
-    TrieNode *current_node = m_root;
-    for (int idx = 0; idx < key.size(); idx++)
+    TrieNode* current_node = m_root;
+    for (size_t idx = 0; idx < key.size(); idx++)
     {
         int char_idx = char_to_idx(key[idx]);
         // when not found

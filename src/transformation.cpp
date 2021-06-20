@@ -6,7 +6,7 @@
 // go thorugh all elements and give coordinates of each element and dimensions or virtual array to transformation callback
 // move every element according to transformation function
 // read new array row by row
-std::string transform_str(transformation_func transformation, const std::string &str, int orig_row_count, int orig_column_count, char filler)
+std::string transform_str(transformation_func transformation, const std::string& str, int orig_row_count, int orig_column_count, char filler)
 {
     // when only row count known
     if (orig_column_count < 1 && orig_row_count >= 1)
@@ -30,8 +30,8 @@ std::string transform_str(transformation_func transformation, const std::string 
 
     std::string result(orig_row_count * orig_column_count, filler);
     // go through all elements
-    ElementParams orig_array_params{-1, -1, orig_row_count, orig_column_count};
-    for (int idx = 0; idx < str.size(); ++idx)
+    ElementParams orig_array_params { -1, -1, orig_row_count, orig_column_count };
+    for (size_t idx = 0; idx < str.size(); ++idx)
     {
         // fill virtual array row by row (original rows)
         orig_array_params.x = idx % orig_column_count;
@@ -41,7 +41,7 @@ std::string transform_str(transformation_func transformation, const std::string 
         ElementParams transformed_array_params = transformation(orig_array_params);
 
         // write character row by row (new rows)
-        int new_idx = transformed_array_params.y * transformed_array_params.column_count + transformed_array_params.x;
+        int new_idx     = transformed_array_params.y * transformed_array_params.column_count + transformed_array_params.x;
         result[new_idx] = str[idx];
     }
     return result;
