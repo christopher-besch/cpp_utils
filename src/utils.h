@@ -7,14 +7,10 @@
 #include <string>
 #include <vector>
 
-#ifdef __linux__
-#define file_slash '/'
-#endif
-#ifdef __wasm__
-#define file_slash '/'
-#endif
 #if defined(_WIN32) || defined(_WIN64)
 #define file_slash '\\'
+#else
+#define file_slash '/'
 #endif
 
 // load files from cwd or from execution location
