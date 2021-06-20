@@ -39,16 +39,18 @@ inline std::string get_exec_dir(std::string execution_path)
 
 #ifndef NDEBUG
 #define raise_error(msg)                                                                                                  \
+    do                                                                                                                    \
     {                                                                                                                     \
         std::cerr << msg << " (in: " << __FILE__ << ":" << __LINE__ << "; in function: " << __func__ << ")" << std::endl; \
         std::exit(EXIT_FAILURE);                                                                                          \
-    }
+    } while (0)
 #else
 #define raise_error(msg)               \
+    do                                 \
     {                                  \
         std::cerr << msg << std::endl; \
         std::exit(EXIT_FAILURE);       \
-    }
+    } while (0)
 #endif
 
 inline int checked_stoi(std::string str)
